@@ -112,17 +112,41 @@ class Melon(object):
     def is_sellable(self):
         return self.shape_rating > 5 and self.color_rating > 5 and self.field != 3
 
-def make_melons(melon_types):
+def make_melons(melon_types=make_melon_types()):
     """Returns a list of Melon objects."""
 
-    # melons reference MelonType via code
-    # instantiate Melon class for each of the harvested melons
-    # return list of melon objects of the class Melon
+    # use make_melon_type_lookup to look through it's dictionary based on .code attr as key
+    # instantiate the melons
+    melon_1 = Melon(make_melon_type_lookup(melon_types)['yw'], 8, 7, 'Harvested from Field 2', 'Harvested by Sheila')
+    melon_2 = Melon(make_melon_type_lookup(melon_types)['yw'], 3, 4, 'Harvested from Field 2', 'Harvested by Sheila')
+    melon_3 = Melon(make_melon_type_lookup(melon_types)['yw'], 9, 8, 'Harvested from Field 3', 'Harvested by Sheila')
+    melon_4 = Melon(make_melon_type_lookup(melon_types)['cas'], 10, 6, 'Harvested from Field 35', 'Harvested by Sheila')
+    melon_5 = Melon(make_melon_type_lookup(melon_types)['cren'], 8, 9, 'Harvested from Field 35', 'Harvested by Michael')
+    melon_6 = Melon(make_melon_type_lookup(melon_types)['cren'], 8, 2, 'Harvested from Field 35', 'Harvested by Michael')
+    melon_7 = Melon(make_melon_type_lookup(melon_types)['cren'], 2, 3, 'Harvested from Field 4', 'Harvested by Michael')
+    melon_8 = Melon(make_melon_type_lookup(melon_types)['musk'], 6, 7, 'Harvested from Field 4', 'Harvested by Michael')
+    melon_9 = Melon(make_melon_type_lookup(melon_types)['yw'], 7, 10, 'Harvested from Field 3', 'Harvested by Sheila')
+    
+    melons = []
+    melons.extend([melon_1,melon_2,melon_3,melon_4,melon_5,melon_6,melon_7,melon_8,melon_9])
+    return melons
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
-
+    
+    for melon in melons:
+        sellable = "(CAN BE SOLD)" if melon.is_sellable() else "(NOT SELLABLE)"
+        print(f"{melon.harvested_by} from {melon.field} {sellable}")
     # Fill in the rest 
+    # function takes in melons list 
 
 
 
+
+all_melon_types = make_melon_types()
+
+melons_by_code_dictionary = make_melon_type_lookup(all_melon_types)
+
+melons_list = make_melons(all_melon_types)
+
+get_sellability_report(melons_list)
