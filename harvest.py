@@ -18,6 +18,9 @@ class MelonType(object):
 
         self.pairings = []
 
+    # def __repr__(self):
+    #     return f'<MelonType code={self.code}>'
+
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
 
@@ -28,8 +31,7 @@ class MelonType(object):
     def update_code(self, new_code):
         """Replace the reporting code with the new_code."""
 
-        # Fill in the rest
-
+        self.code = new_code
 
 def make_melon_types():
     """Returns a list of current melon types."""
@@ -93,8 +95,22 @@ def make_melon_type_lookup(melon_types):
 class Melon(object):
     """A melon in a melon harvest."""
 
-    # Fill in the rest
     # Needs __init__ and is_sellable methods
+
+    def __init__(self, code, shape_rating, color_rating, field, harvested_by):
+        """Initialize a melon."""
+        self.code = code
+        self.shape_rating = shape_rating
+        self.color_rating = color_rating
+        self.field = field
+        self.harvested_by = harvested_by
+
+    # define method is_sellable
+        # if statements for shape & color rating > 5 to be sellable
+        # and if statment for not in field 3
+        # return Boolean
+    def is_sellable(self, shape_rating, color_rating, field):
+        return self.shape_rating > 5 and self.color_rating > 5 and self.field != 3
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
