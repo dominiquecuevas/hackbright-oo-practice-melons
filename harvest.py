@@ -109,13 +109,15 @@ class Melon(object):
         # if statements for shape & color rating > 5 to be sellable
         # and if statment for not in field 3
         # return Boolean
-    def is_sellable(self, shape_rating, color_rating, field):
+    def is_sellable(self):
         return self.shape_rating > 5 and self.color_rating > 5 and self.field != 3
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    # melons reference MelonType via code
+    # instantiate Melon class for each of the harvested melons
+    # return list of melon objects of the class Melon
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
